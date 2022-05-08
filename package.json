@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "nuxt-app:build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
-    "nuxt-app:start": "yarn workspace @humbledao/nuxt-app start",
+    "nuxt-app:dev": "yarn workspace @humbledao/nuxt-app dev",
     "nuxt-app:generate": "yarn workspace @humbledao/nuxt-app generate",
     "nuxt-app:preview": "yarn workspace @humbledao/nuxt-app preview",
     "nuxt-app:test": "yarn workspace @humbledao/nuxt-app test",
@@ -22,7 +22,7 @@
     "fork": "yarn workspace @humbledao/hardhat fork",
     "node": "yarn workspace @humbledao/hardhat chain",
     "test": "yarn workspace @humbledao/hardhat test",
-    "start": "yarn workspace @humbledao/nuxt-app start",
+    "dev": "yarn workspace @humbledao/nuxt-app dev",
     "compile": "yarn workspace @humbledao/hardhat compile",
     "deploy": "yarn workspace @humbledao/hardhat deploy",
     "verify": "yarn workspace @humbledao/hardhat verify",
