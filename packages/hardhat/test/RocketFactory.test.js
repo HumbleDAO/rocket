@@ -16,6 +16,17 @@ describe('My Rocket Test', function () {
     it('Should deploy RocketFactory', async function () {
       const RocketFactory = await ethers.getContractFactory('RocketFactory')
       myContract = await RocketFactory.deploy()
+      console.log(myContract.address)
+    }) 
+    
+    it("Should create a tx", async function () {
+      // const RocketFactory = await ethers.getContractFactory('RocketFactory')
+      const GoofyGoober = await ethers.getContractFactory('GoofyGoober')
+      myToken = await GoofyGoober.deploy()
+      address = myToken.address
+      console.log
+      let result = await myContract.createTransaction("0x976EA74026E726554dB657fA54763abd0C3a0aa9",address,0,1652078273,0)
+      console.log(result)
     })
 
     // describe('setPurpose()', function () {
