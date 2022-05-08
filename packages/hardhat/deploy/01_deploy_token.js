@@ -24,7 +24,6 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     log: true,
     waitConfirmations: 5,
   });
-  
 
   // Getting a previously deployed contract
   // const YourContract = await ethers.getContract("RocketFactory", deployer);
@@ -77,4 +76,5 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   //   console.error(error);
   // }
 };
+
 module.exports.tags = ["RocketFactory"];
