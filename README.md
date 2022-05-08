@@ -1,21 +1,27 @@
-# 🏗 Scaffold-ETH Lite with Nuxt3 (rc)
+# 🏗 rocket-dapp (scaffold-eth X vue3 X nuxt3)
 
-Inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth) but with [Nuxt3](https://v3.nuxtjs.org/) without some features
+Inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
+
+### Buidl With
+
+[Nuxt 3](https://v3.nuxtjs.org/)
+[Vue 3](https://vuejs.org/guide/introduction.html)
+[Hardhat](https://hardhat.org/getting-started/)
 
 # 🏄‍♂️ Quick Start
 
 Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-> clone/fork 🏗 scaffold-eth:
+> clone
 
 ```bash
-git clone https://github.com/HumbleDAO/scaffold-eth.git
+git clone https://github.com/HumbleDAO/rocket.git
 ```
 
 > install and start your 👷‍ Hardhat chain:
 
 ```bash
-cd scaffold-eth
+cd rocket-dapp
 yarn install
 yarn chain
 ```
@@ -23,14 +29,14 @@ yarn chain
 > in a second terminal window, start your 📱 frontend:
 
 ```bash
-cd scaffold-eth
+cd rocket-dapp
 yarn start
 ```
 
 > in a third terminal window, 🛰 deploy your contract:
 
 ```bash
-cd scaffold-eth
+cd rocket-dapp
 yarn deploy
 ```
 

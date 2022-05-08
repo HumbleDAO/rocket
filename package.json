@@ -1,5 +1,5 @@
 {
-  "name": "@humbledao/scaffold-eth",
+  "name": "@humbledao/rocket",
   "version": "1.0.0",
   "keywords": [
     "ethereum",
@@ -46,9 +46,9 @@
     "clean-graph-node": "yarn workspace @humbledao/services clean-graph-node",
     "graph-codegen": "yarn workspace @humbledao/subgraph graph codegen",
     "graph-build": "yarn workspace @humbledao/subgraph graph build",
-    "graph-create-local": "yarn workspace @humbledao/subgraph graph create --node http://localhost:8020/ scaffold-eth/your-contract",
-    "graph-remove-local": "yarn workspace @humbledao/subgraph graph remove --node http://localhost:8020/ scaffold-eth/your-contract",
-    "graph-deploy-local": "yarn workspace @humbledao/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 scaffold-eth/your-contract",
+    "graph-create-local": "yarn workspace @humbledao/subgraph graph create --node http://localhost:8020/ rocket/your-contract",
+    "graph-remove-local": "yarn workspace @humbledao/subgraph graph remove --node http://localhost:8020/ rocket/your-contract",
+    "graph-deploy-local": "yarn workspace @humbledao/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rocket/your-contract",
     "graph-ship-local": "yarn graph-codegen && yarn graph-build --network localhost && yarn graph-deploy-local",
     "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
     "theme": "yarn workspace @humbledao/nuxt-app theme",
