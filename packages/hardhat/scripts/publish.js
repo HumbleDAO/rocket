@@ -77,6 +77,7 @@
 //   });
 //   console.log("✅  Published contracts to the subgraph package.");
 // }
+
 // main()
 //   .then(() => process.exit(0))
 //   .catch((error) => {
