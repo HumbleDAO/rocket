@@ -23,6 +23,7 @@ contract RocketFactory {
     //creates a new transaction for later scheduling
     function createTransaction(address receiver, address ERC20TokenAddress, uint amount, uint deadline, uint tip) public {
         // Check if they have the ERC20Token amount in their wallet
+        uint dueBy = block.timestamp + deadline; //in seconds
         IERC20 token = IERC20(ERC20TokenAddress);
         require(
             token.allowance(msg.sender, address(this)) >= amount,
@@ -33,7 +34,7 @@ contract RocketFactory {
         bool sent = token.transferFrom(msg.sender, address(this), amount);
         require(sent, "transfer fialed");
 
-        Transaction memory newTransaction = Transaction(transactionsList.length ,msg.sender, receiver, deadline, ERC20TokenAddress, amount, tip, true);
+        Transaction memory newTransaction = Transaction(transactionsList.length ,msg.sender, receiver, dueBy, ERC20TokenAddress, amount, tip, true);
         transactionsList.push(newTransaction);
     
     }
@@ -46,6 +47,7 @@ contract RocketFactory {
         //ensure that the transaction is not pending
         Transaction memory scheduledTx = getTransaction(id);
         require(scheduledTx.pending == true, "Already executed");
+        // require( block.timestamp >= scheduledTx.deadline,"Not ready to be executed");
         
         //take the money from the lending pool and send it to the receiver
         //do this later
