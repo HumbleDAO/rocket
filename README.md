@@ -1,4 +1,4 @@
-# 🏗 rocket-dapp (scaffold-eth X vue3 X nuxt3)
+# 🏗 Rocket (scaffold-eth X vue3 X nuxt3)
 
 Inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
 
@@ -21,7 +21,7 @@ git clone https://github.com/HumbleDAO/rocket.git
 > install and start your 👷‍ Hardhat chain:
 
 ```bash
-cd rocket-dapp
+cd rocket
 yarn install
 yarn chain
 ```
@@ -29,14 +29,14 @@ yarn chain
 > in a second terminal window, start your 📱 frontend:
 
 ```bash
-cd rocket-dapp
+cd rocket
 yarn start
 ```
 
 > in a third terminal window, 🛰 deploy your contract:
 
 ```bash
-cd rocket-dapp
+cd rocket
 yarn deploy
 ```
 
