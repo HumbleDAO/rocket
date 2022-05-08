@@ -6,219 +6,9 @@
 require('dotenv').config()
 const Web3 = require('web3')
 const Provider = require('@truffle/hdwallet-provider')
-const json = [
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'receiver',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'ERC20TokenAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'deadline',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'tip',
-        type: 'uint256',
-      },
-    ],
-    name: 'createTransaction',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-    ],
-    name: 'executeTransaction',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'owner',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'receiver',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'deadline',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'ERC20TokenAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'tip',
-            type: 'uint256',
-          },
-          {
-            internalType: 'bool',
-            name: 'pending',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct RocketFactory.Transaction',
-        name: '',
-        type: 'tuple',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'getAllTransactions',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'owner',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'receiver',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'deadline',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'ERC20TokenAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'tip',
-            type: 'uint256',
-          },
-          {
-            internalType: 'bool',
-            name: 'pending',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct RocketFactory.Transaction[]',
-        name: '',
-        type: 'tuple[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-    ],
-    name: 'getTransaction',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'owner',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'receiver',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'deadline',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'ERC20TokenAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'tip',
-            type: 'uint256',
-          },
-          {
-            internalType: 'bool',
-            name: 'pending',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct RocketFactory.Transaction',
-        name: '',
-        type: 'tuple',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-]
-const addy = '0x59E83F339eecA8214d39580a40621077F0e2c6c8'
+const json = require('../nuxt-app/contracts/ABI/RocketFactory.json')
+
+const addy = '0x31d3654b74fdacfBD990ba041Ad2B9C6B63a7B0A'
 const alchemyKey = process.env.ALCHEMY_API_KEY
 const provider = new Provider(
   process.env.PRIVATE_KEY,
@@ -246,19 +36,35 @@ async function queryForTransactions() {
 
       if (pendingTransactions) {
         pendingTransactions.map(async (obj) => {
-          await Rocket.methods
-            .executeTransaction(obj.id)
-            .send({ from: process.env.ADDRESS }, function (error, result) {
-              console.log(result)
-              if (error) console.log(error)
-            })
+          // await Rocket.methods
+          //   .executeTransaction(obj.id)
+          //   .send({ from: process.env.ADDRESS }, function (error, result) {
+          //     console.log(result)
+          //     if (error) console.log(error)
+          //   })
         })
       }
     })
 }
 
+async function createScheduledTransaction() {
+  let res = await Rocket.methods
+    .createTransaction(
+      '0x976EA74026E726554dB657fA54763abd0C3a0aa9',
+      '0xDe60452084676294786a99E4dF017c7d5Aad9681',
+      0,
+      1,
+      0,
+    )
+    .send({ from: process.env.ADDRESS }, function (error, result) {
+      console.log(result)
+      if (error) console.log(error)
+    })
+}
+
 // BOT LOGIC
 setInterval(function () {
+  // createScheduledTransaction()
   queryForTransactions()
 }, 5000)
 
