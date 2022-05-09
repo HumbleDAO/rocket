@@ -1,4 +1,4 @@
-# 🏗 Rocket (scaffold-eth X vue3 X nuxt3)
+# 🏗 Rocket (scaffold-eth | nuxt3)
 
 Inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
 
