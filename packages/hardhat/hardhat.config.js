@@ -111,21 +111,21 @@ module.exports = {
     },
     xdai: {
       url: "https://rpc.xdaichain.com/",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     fantom: {
       url: "https://rpcapi.fantom.network",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     testnetFantom: {
       url: "https://rpc.testnet.fantom.network",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -148,7 +148,7 @@ module.exports = {
     },
     matic: {
       url: "https://rpc-mainnet.maticvigil.com/",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -216,7 +216,7 @@ module.exports = {
     },
     testnetHarmony: {
       url: "https://api.s0.b.hmny.io",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       chainId: 1666700000,
       accounts: {
         mnemonic: mnemonic(),
@@ -224,7 +224,7 @@ module.exports = {
     },
     mainnetHarmony: {
       url: "https://api.harmony.one",
-      gasPrice: 1000000000,
+      gasPrice: 8000000000,
       chainId: 1666600000,
       accounts: {
         mnemonic: mnemonic(),
@@ -609,7 +609,7 @@ task("send", "Send ETH")
       txRequest.data = taskArgs.data;
       debug(`Adding data to payload: ${txRequest.data}`);
     }
-    debug(txRequest.gasPrice / 1000000000 + " gwei");
+    debug(txRequest.gasPrice / 8000000000 + " gwei");
     debug(JSON.stringify(txRequest, null, 2));
 
     return send(fromSigner, txRequest);
