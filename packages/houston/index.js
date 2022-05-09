@@ -102,7 +102,7 @@ async function checkUpkeep() {
 
 // BOT LOGIC
 setInterval(function () {
-  // createScheduledTransaction()
+  createScheduledTransaction()
   queryForTransactions()
   // checkUpkeep()
 }, 2000)
