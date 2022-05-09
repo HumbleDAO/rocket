@@ -115,7 +115,7 @@ contract RocketFactory is KeeperCompatibleInterface {
         for (uint256 index = 0; index < allTxs.length; index++) {
             Transaction memory tx = allTxs[index];
             if (tx.deadline < block.timestamp) {
-                upkeepNeeded == true;
+                upkeepNeeded = true;
             }
         }
     }
