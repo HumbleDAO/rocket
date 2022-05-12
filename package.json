@@ -1,75 +1,75 @@
 {
-    "name": "@humbledao/rocket",
-    "version": "1.0.0",
-    "keywords": [
-        "ethereum",
-        "vue",
-        "nuxt",
-        "uniswap",
-        "workspaces",
-        "yarn"
+  "name": "@humbledao/rocket",
+  "version": "1.0.0",
+  "keywords": [
+    "ethereum",
+    "vue",
+    "nuxt",
+    "uniswap",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "nuxt-app:build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
+    "nuxt-app:dev": "yarn workspace @humbledao/nuxt-app dev",
+    "nuxt-app:generate": "yarn workspace @humbledao/nuxt-app generate",
+    "nuxt-app:preview": "yarn workspace @humbledao/nuxt-app preview",
+    "nuxt-app:test": "yarn workspace @humbledao/nuxt-app test",
+    "build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
+    "prettier": "yarn workspace @humbledao/nuxt-app prettier --write && yarn workspace @humbledao/hardhat prettier --write",
+    "chain": "yarn workspace @humbledao/hardhat chain",
+    "fork": "yarn workspace @humbledao/hardhat fork",
+    "node": "yarn workspace @humbledao/hardhat chain",
+    "test": "yarn workspace @humbledao/hardhat test",
+    "dev": "yarn workspace @humbledao/nuxt-app dev",
+    "compile": "yarn workspace @humbledao/hardhat compile",
+    "deploy": "yarn workspace @humbledao/hardhat deploy",
+    "verify": "yarn workspace @humbledao/hardhat verify",
+    "watch": "yarn workspace @humbledao/hardhat watch",
+    "accounts": "yarn workspace @humbledao/hardhat accounts",
+    "balance": "yarn workspace @humbledao/hardhat balance",
+    "send": "yarn workspace @humbledao/hardhat send",
+    "ipfs": "yarn workspace @humbledao/nuxt-app ipfs",
+    "surge": "yarn workspace @humbledao/nuxt-app surge",
+    "s3": "yarn workspace @humbledao/nuxt-app s3",
+    "ship": "yarn workspace @humbledao/nuxt-app ship",
+    "generate": "yarn workspace @humbledao/hardhat generate",
+    "account": "yarn workspace @humbledao/hardhat account",
+    "mineContractAddress": "cd packages/hardhat && npx hardhat mineContractAddress",
+    "wallet": "cd packages/hardhat && npx hardhat wallet",
+    "fundedwallet": "cd packages/hardhat && npx hardhat fundedwallet",
+    "flatten": "cd packages/hardhat && npx hardhat flatten",
+    "clean": "cd packages/hardhat && npx hardhat clean",
+    "run-graph-node": "yarn workspace @humbledao/services run-graph-node",
+    "remove-graph-node": "yarn workspace @humbledao/services remove-graph-node",
+    "clean-graph-node": "yarn workspace @humbledao/services clean-graph-node",
+    "graph-codegen": "yarn workspace @humbledao/subgraph graph codegen",
+    "graph-build": "yarn workspace @humbledao/subgraph graph build",
+    "graph-create-local": "yarn workspace @humbledao/subgraph graph create --node http://localhost:8020/ rocket/your-contract",
+    "graph-remove-local": "yarn workspace @humbledao/subgraph graph remove --node http://localhost:8020/ rocket/your-contract",
+    "graph-deploy-local": "yarn workspace @humbledao/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rocket/your-contract",
+    "graph-ship-local": "yarn graph-codegen && yarn graph-build --network localhost && yarn graph-deploy-local",
+    "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
+    "theme": "yarn workspace @humbledao/nuxt-app theme",
+    "watch-theme": "yarn workspace @humbledao/nuxt-app watch",
+    "postinstall": "husky install"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
     ],
-    "private": true,
-    "scripts": {
-        "nuxt-app:build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
-        "nuxt-app:dev": "yarn workspace @humbledao/nuxt-app dev",
-        "nuxt-app:generate": "yarn workspace @humbledao/nuxt-app generate",
-        "nuxt-app:preview": "yarn workspace @humbledao/nuxt-app preview",
-        "nuxt-app:test": "yarn workspace @humbledao/nuxt-app test",
-        "build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
-        "prettier": "yarn workspace @humbledao/nuxt-app prettier",
-        "chain": "yarn workspace @humbledao/hardhat chain",
-        "fork": "yarn workspace @humbledao/hardhat fork",
-        "node": "yarn workspace @humbledao/hardhat chain",
-        "test": "yarn workspace @humbledao/hardhat test",
-        "dev": "yarn workspace @humbledao/nuxt-app dev",
-        "compile": "yarn workspace @humbledao/hardhat compile",
-        "deploy": "yarn workspace @humbledao/hardhat deploy",
-        "verify": "yarn workspace @humbledao/hardhat verify",
-        "watch": "yarn workspace @humbledao/hardhat watch",
-        "accounts": "yarn workspace @humbledao/hardhat accounts",
-        "balance": "yarn workspace @humbledao/hardhat balance",
-        "send": "yarn workspace @humbledao/hardhat send",
-        "ipfs": "yarn workspace @humbledao/nuxt-app ipfs",
-        "surge": "yarn workspace @humbledao/nuxt-app surge",
-        "s3": "yarn workspace @humbledao/nuxt-app s3",
-        "ship": "yarn workspace @humbledao/nuxt-app ship",
-        "generate": "yarn workspace @humbledao/hardhat generate",
-        "account": "yarn workspace @humbledao/hardhat account",
-        "mineContractAddress": "cd packages/hardhat && npx hardhat mineContractAddress",
-        "wallet": "cd packages/hardhat && npx hardhat wallet",
-        "fundedwallet": "cd packages/hardhat && npx hardhat fundedwallet",
-        "flatten": "cd packages/hardhat && npx hardhat flatten",
-        "clean": "cd packages/hardhat && npx hardhat clean",
-        "run-graph-node": "yarn workspace @humbledao/services run-graph-node",
-        "remove-graph-node": "yarn workspace @humbledao/services remove-graph-node",
-        "clean-graph-node": "yarn workspace @humbledao/services clean-graph-node",
-        "graph-codegen": "yarn workspace @humbledao/subgraph graph codegen",
-        "graph-build": "yarn workspace @humbledao/subgraph graph build",
-        "graph-create-local": "yarn workspace @humbledao/subgraph graph create --node http://localhost:8020/ rocket/your-contract",
-        "graph-remove-local": "yarn workspace @humbledao/subgraph graph remove --node http://localhost:8020/ rocket/your-contract",
-        "graph-deploy-local": "yarn workspace @humbledao/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rocket/your-contract",
-        "graph-ship-local": "yarn graph-codegen && yarn graph-build --network localhost && yarn graph-deploy-local",
-        "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
-        "theme": "yarn workspace @humbledao/nuxt-app theme",
-        "watch-theme": "yarn workspace @humbledao/nuxt-app watch",
-        "postinstall": "husky install"
-    },
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ],
-        "nohoist": [
-            "**/@graphprotocol/graph-ts",
-            "**/@graphprotocol/graph-ts/**",
-            "**/hardhat",
-            "**/hardhat/**",
-            "**/hardhat-ts",
-            "**/hardhat-ts/**"
-        ]
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "husky": "^7.0.2"
-    }
+    "nohoist": [
+      "**/@graphprotocol/graph-ts",
+      "**/@graphprotocol/graph-ts/**",
+      "**/hardhat",
+      "**/hardhat/**",
+      "**/hardhat-ts",
+      "**/hardhat-ts/**"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^7.0.2"
+  }
 }

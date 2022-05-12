@@ -17,28 +17,33 @@ describe('My Rocket Test', function () {
       const RocketFactory = await ethers.getContractFactory('RocketFactory')
       myContract = await RocketFactory.deploy()
       // console.log(myContract.address)
-    }) 
-    
-    it("Should create a tx", async function () {
+    })
+
+    it('Should create a tx', async function () {
       const GoofyGoober = await ethers.getContractFactory('GoofyGoober')
       myToken = await GoofyGoober.deploy()
       address = myToken.address
-      let result = await myContract.createTransaction("0x976EA74026E726554dB657fA54763abd0C3a0aa9",address,0,1652078273,0)
+      let result = await myContract.createTransaction(
+        '0x976EA74026E726554dB657fA54763abd0C3a0aa9',
+        address,
+        0,
+        1652078273,
+        0
+      )
       // console.log(result)
     })
 
-    it("Should get all transactions", async function () {
+    it('Should get all transactions', async function () {
       let result = await myContract.getAllTransactions()
       // console.log(result)
     })
 
-    it("Should get a specific transaction", async function () {
+    it('Should get a specific transaction', async function () {
       let result = await myContract.getTransaction(0)
       // console.log("transaction",result)
     })
 
-
-    it("Should execute a transaction and switch the pending flag to true", async function () {
+    it('Should execute a transaction and switch the pending flag to true', async function () {
       // const GoofyGoober = await ethers.getContractFactory('GoofyGoober')
       // myToken = await GoofyGoober.deploy()
       // address = myToken.address
