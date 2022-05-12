@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <!-- TODO: remove -->
-        <NuxtWelcome />
-    </div>
+  <div>
+    <!-- TODO: remove -->
+    <NuxtWelcome />
+  </div>
 </template>
 
 <script></script>

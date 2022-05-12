@@ -1,7 +1,10 @@
 {
-  "compilerOptions": {
-    "allowJs": true
-  },
-  // https://v3.nuxtjs.org/concepts/typescript
-  "extends": "./packaes/nuxt-app/.nuxt/tsconfig.json"
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "jsx": "preserve",
+        "forceConsistentCasingInFileNames": true
+    },
+    // https://v3.nuxtjs.org/concepts/typescript
+    "extends": "./packages/nuxt-app/.nuxt/tsconfig.json"
 }
