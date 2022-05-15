@@ -21,10 +21,11 @@
           <Dropdown />
         </div>
       </div>
-      <div class="amount">
-        <!-- Amount Textfield --> 
-        Amount textfield goes here
+      <div class="asset-select">
+        <!-- Asset Selection Dropdown --> 
+        Asset Selection goes here
       </div>
+    <!-- Amount Textfield -->   
     <!-- Recipient Textfield / Include CSV Option? --> 
     <!-- Split Evenly Button:default || Custom Split Option --> 
     <!-- Custom Split GUI if selected  --> 
