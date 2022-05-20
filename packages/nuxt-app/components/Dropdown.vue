@@ -21,7 +21,7 @@
             >
             <ListboxOption
                 v-slot="{ active, selected }"
-                v-for="person in people"
+                v-for="person in blockchain"
                 :key="person.name"
                 :value="person"
                 as="template"
@@ -63,13 +63,13 @@ import {
 } from '@headlessui/vue'
 import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 
-const people = [
-  { name: 'Ethereum' },
+const blockchain = [
   { name: 'Polygon' },
+  { name: 'Ethereum' },
   { name: 'Arbitrum' },
   { name: 'Avalanche' },
   { name: 'Binance Smart Chain' },
   { name: 'Harmony' }
 ]
-const selectedPerson = ref(people[0])
+const selectedPerson = ref(blockchain[0])
 </script>
