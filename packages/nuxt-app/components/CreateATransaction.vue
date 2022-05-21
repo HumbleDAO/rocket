@@ -72,26 +72,26 @@
 
 </script>
 
-
+:
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
 
 .ide-container {
     display: flex;
     justify-content: center;
-    font-size: .95rem;
+    font-size: 1.2rem;
 }
 .ide {
     display: grid;
     grid-template-columns: auto 1fr;
     background-color: #2e303b;
-    border-radius: 16px;
-    padding: 30px;
+    /* padding: 30px; */
     font-family: 'Roboto Mono', monospace;
-    box-shadow: 3px 3px 10px 2px #797979;
-    margin: 16px;
+    transition: all .25s ease-in-out;
 }
 
+.ide:hover {
+    transform: scale(1.1)
+}
 
 .lines {
     display: flex;
@@ -99,6 +99,7 @@
     padding: 0 24px 10px 12px;
     color: rgb(173, 173, 173);
     text-align: right;
+    justify-content: space-evenly;
 }
 
 .code {
