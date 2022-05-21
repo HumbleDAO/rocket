@@ -98,8 +98,7 @@ contract RocketFactory is KeeperCompatibleInterface {
     //TODO ad logic that sends this to the tresury address
 
     // SEND FUNDS
-    scheduledTx.ERC20TokenAddress.transferFrom(
-      address(this),
+    scheduledTx.ERC20TokenAddress.transfer(
       scheduledTx.receiver,
       scheduledTx.amount
     );
