@@ -139,7 +139,8 @@ module.exports = {
       },
     },
     mumbai: {
-      url: 'https://polygon-mumbai.g.alchemy.com/v2/DXdnHGOivf3gq0iDz7N4vU12aMUu-ODV',
+      url:
+        'https://polygon-mumbai.g.alchemy.com/v2/DXdnHGOivf3gq0iDz7N4vU12aMUu-ODV',
       // url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/polygon/mumbai", // <---- YOUR MORALIS ID! (not limited to infura)
       gasPrice: 3200000000,
       accounts: {
@@ -291,7 +292,9 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      mainnet: 'DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW',
+      // mainnet: 'DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW',
+      polygonMumbai: '4B9F5KERBRV4Y1SGV4RSRC25D5ET8HG6U2',
+      polygon: '4B9F5KERBRV4Y1SGV4RSRC25D5ET8HG6U2',
       // add other network's API key here
     },
   },

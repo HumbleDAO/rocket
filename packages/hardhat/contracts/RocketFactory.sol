@@ -20,7 +20,7 @@ contract RocketFactory is KeeperCompatibleInterface {
     address owner;
     address receiver;
     uint256 deadline;
-    address ERC20TokenAddress;
+    IERC20 ERC20TokenAddress;
     uint256 amount;
     uint256 tip;
     bool pending;
@@ -28,21 +28,21 @@ contract RocketFactory is KeeperCompatibleInterface {
 
   //TODO fix this shit
   //sends the tip amount to the treasury address
-  function claimTip(
-    address IERC20address,
-    address treasury,
-    uint256 amount,
-    uint256 tip
-  ) public returns (uint256 taxAmount) {
-    uint256 taxAmount = ABDKMath64x64.mulu(amount, tip);
-    transferFrom(address(this), treasury, taxAmount);
-    return taxAmount;
-  }
+  // function claimTip(
+  //   address payable IERC20address,
+  //   address treasury,
+  //   uint256 amount,
+  //   uint256 tip
+  // ) public returns (uint256 taxAmount) {
+  //   uint256 tax = ABDKMath64x64.mulu(amount, tip);
+  //   IERC20address.transfer(treasury, tax);
+  //   return tax;
+  // }
 
   //creates a new transaction for later scheduling
   function createTransaction(
     address receiver,
-    address ERC20TokenAddress,
+    IERC20 ERC20TokenAddress,
     uint256 amount,
     uint256 deadline,
     uint256 tip
@@ -57,7 +57,7 @@ contract RocketFactory is KeeperCompatibleInterface {
 
     //Send that amount to the contract
     bool sent = token.transferFrom(msg.sender, address(this), amount);
-    require(sent, 'transfer fialed');
+    require(sent, 'transfer failed');
 
     Transaction memory newTransaction = Transaction(
       transactionsList.length,
@@ -86,16 +86,23 @@ contract RocketFactory is KeeperCompatibleInterface {
     //do this later
 
     //send the tip reward to the treasury
-    address treasury = 0x54e51feF99fFcCDCE4a7391a7c81FB0087A376de;
-    uint256 taxAmount = claimTip(
-      scheduledTx.ERC20TokenAddress,
-      treasury,
-      scheduledTx.amount,
-      scheduledTx.tip
-    );
-    uint256 actualAmount = scheduledTx.amount - taxAmount;
+    // address treasury = 0x54e51feF99fFcCDCE4a7391a7c81FB0087A376de;
+    // uint256 taxAmount = claimTip(
+    //   scheduledTx.ERC20TokenAddress,
+    //   treasury,
+    //   scheduledTx.amount,
+    //   scheduledTx.tip
+    // );
+    // uint256 actualAmount = scheduledTx.amount - taxAmount;
 
     //TODO ad logic that sends this to the tresury address
+
+    // SEND FUNDS
+    scheduledTx.ERC20TokenAddress.transferFrom(
+      address(this),
+      scheduledTx.receiver,
+      scheduledTx.amount
+    );
 
     // create a new struct and update the transactionsList
     Transaction memory newTransaction = Transaction(

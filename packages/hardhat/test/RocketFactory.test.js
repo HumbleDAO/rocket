@@ -27,10 +27,10 @@ describe('My Rocket Test', function () {
         '0x976EA74026E726554dB657fA54763abd0C3a0aa9',
         address,
         0,
-        1652078273,
+        0,
         0
       )
-      // console.log(result)
+      // console.log(result, myToken, 'Token')
     })
 
     it('Should get all transactions', async function () {
@@ -40,7 +40,13 @@ describe('My Rocket Test', function () {
 
     it('Should get a specific transaction', async function () {
       let result = await myContract.getTransaction(0)
-      // console.log("transaction",result)
+      // console.log('transaction', result)
+    })
+
+    it('Should have token balance', async function () {
+      const [owner] = await ethers.getSigners()
+      const ownerBalance = await myToken.balanceOf(owner.address)
+      console.log('balance', ownerBalance)
     })
 
     it('Should execute a transaction and switch the pending flag to true', async function () {
@@ -48,10 +54,15 @@ describe('My Rocket Test', function () {
       // myToken = await GoofyGoober.deploy()
       // address = myToken.address
       executedTransaction = await myContract.executeTransaction(0)
-      expect(executedTransaction[7].to.equal('false'))
+      // expect(executedTransaction[7].equal('false'))
       expectedTransaction = await myContract.getTransaction(0)
-      expect(expectedTransaction[7].to.equal('false'))
-      console.log(executedTransaction, expectedTransaction)
+      // expect(expectedTransaction[7].equal('true'))
+      // console.log(executedTransaction, expectedTransaction)
+
+      const receiverBalance = await myToken.balanceOf(
+        '0x976ea74026e726554db657fa54763abd0c3a0aa9'
+      )
+      console.log('receiverBalance', receiverBalance)
     })
 
     // describe('setPurpose()', function () {
