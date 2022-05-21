@@ -8,7 +8,7 @@ const Web3 = require('web3')
 const Provider = require('@truffle/hdwallet-provider')
 const json = require('../nuxt-app/contracts/ABI/RocketFactory.json')
 const tagJSON = require('../nuxt-app/contracts/ABI/GoofyGoober.json')
-const addy = '0x923aC4A19DAE1b0875361312556E7469869b140b'
+const addy = '0x07180cdee8391Af675B30F39F5C9Ac6b0097C598'
 const ctag = '0xc69F4eF2138764A52e7dd7Ec2931d1CdD7B32d0f'
 const alchemyKey = process.env.ALCHEMY_API
 const provider = new Provider(
@@ -73,7 +73,10 @@ async function queryForTransactions() {
 async function createScheduledTransaction() {
   isQuerying = true
   // let appr = await CTAG.methods
-  //   .approve(addy, 100)
+  //   .approve(
+  //     addy,
+  //     '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+  //   )
   //   .send({ from: process.env.ADDRESS }, function (error, result) {
   //     console.log(result)
   //     if (error) console.log(error)
@@ -83,8 +86,8 @@ async function createScheduledTransaction() {
     .createTransaction(
       '0x54e51feF99fFcCDCE4a7391a7c81FB0087A376de',
       ctag, // Cipher Tags
-      Math.floor(Math.random()) * 100,
-      Math.floor(Math.random()) * 100,
+      Web3.utils.toWei(String(Math.floor(Math.random() * 100) + 1, 'ether')),
+      Math.floor(Math.random() * 100) + 1,
       0
     )
     .send({ from: process.env.ADDRESS }, function (error, result) {
@@ -120,9 +123,9 @@ createScheduledTransaction()
 // BOT LOGIC
 setInterval(function () {
   if (!isQuerying) {
-    createScheduledTransaction()
   }
-}, 10000)
+  // createScheduledTransaction()
+}, 5000)
 
 setInterval(function () {
   if (!isExecuting) {
