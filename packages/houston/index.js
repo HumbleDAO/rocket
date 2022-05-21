@@ -8,23 +8,26 @@ const Web3 = require('web3')
 const Provider = require('@truffle/hdwallet-provider')
 const json = require('../nuxt-app/contracts/ABI/RocketFactory.json')
 const tagJSON = require('../nuxt-app/contracts/ABI/GoofyGoober.json')
-const addy = '0xA0d71F67052F3Eb41C6F706C6b4fAe00CE20D35b'
-const ctag = '0xc69f4ef2138764a52e7dd7ec2931d1cdd7b32d0f'
-const alchemyKey = process.env.ALCHEMY_API_KEY
+const addy = '0x923aC4A19DAE1b0875361312556E7469869b140b'
+const ctag = '0xc69F4eF2138764A52e7dd7Ec2931d1CdD7B32d0f'
+const alchemyKey = process.env.ALCHEMY_API
 const provider = new Provider(
   process.env.PRIVATE_KEY,
-  `https://polygon-mumbai.g.alchemy.com/v2/${alchemyKey}`,
+  `https://polygon-mumbai.g.alchemy.com/v2/${alchemyKey}`
 )
 const web3 = new Web3(provider)
 const Rocket = new web3.eth.Contract(json, addy)
 const CTAG = new web3.eth.Contract(tagJSON, ctag)
+let isExecuting = false
+let isQuerying = false
 
 //Functions
 async function queryForTransactions() {
+  isExecuting = true
   let totalTransactions = -1
   await Rocket.methods
     .getAllTransactions()
-    .call({ from: process.env.ADDRESS }, (error, result) => {
+    .call({ from: process.env.ADDRESS }, async (error, result) => {
       pendingTransactions = result.filter((obj) => {
         return obj.pending == true
       })
@@ -37,43 +40,55 @@ async function queryForTransactions() {
       }
 
       if (pendingTransactions) {
-        pendingTransactions.map(async (obj) => {
-          const blockNumber = await web3.eth.getBlockNumber()
-          const timestamp = await web3.eth.getBlock(blockNumber)
-          console.log(
-            obj.deadline,
-            timestamp.timestamp,
-            obj.deadline < timestamp.timestamp,
-          )
-          await Rocket.methods
-            .executeTransaction(obj.id)
-            .send({ from: process.env.ADDRESS }, function (error, result) {
-              console.log(result)
-              if (error) console.log(error)
-            })
-        })
+        // let obj = pendingTransactions[0]
+        // const blockNumber = await web3.eth.getBlockNumber()
+        // const timestamp = await web3.eth.getBlock(blockNumber)
+        // console.log(
+        //   obj.deadline,
+        //   timestamp.timestamp,
+        //   obj.deadline < timestamp.timestamp
+        // )
+        // await Rocket.methods
+        //   .executeTransaction(obj.id)
+        //   .send({ from: process.env.ADDRESS }, function (error, result) {
+        //     console.log(result)
+        //     if (error) console.log(error)
+        //   })
+
+        // await Rocket.methods
+        //   .executeAll()
+        //   .send({ from: process.env.ADDRESS, gas: 500000 }, function (
+        //     error,
+        //     result
+        //   ) {
+        //     console.log(result)
+        //     if (error) console.log(error)
+        //   })
+
+        isExecuting = false
       }
     })
 }
 
 async function createScheduledTransaction() {
-  let appr = await CTAG.methods
-    .approve(addy, String(100 * 10 ** 18))
-    .send({ from: process.env.ADDRESS }, function (error, result) {
-      console.log(result)
-      if (error) console.log(error)
-    })
-  console.log(appr)
+  isQuerying = true
+  // let appr = await CTAG.methods
+  //   .approve(addy, 100)
+  //   .send({ from: process.env.ADDRESS }, function (error, result) {
+  //     console.log(result)
+  //     if (error) console.log(error)
+  //   })
+  // console.log(appr)
   let res = await Rocket.methods
     .createTransaction(
       '0x54e51feF99fFcCDCE4a7391a7c81FB0087A376de',
-      '0xc69f4ef2138764a52e7dd7ec2931d1cdd7b32d0f', // Cipher Tags
-      10 * 10 ** 18,
-      1,
-      0,
+      ctag, // Cipher Tags
+      Math.floor(Math.random()) * 100,
+      Math.floor(Math.random()) * 100,
+      0
     )
     .send({ from: process.env.ADDRESS }, function (error, result) {
-      console.log(result)
+      console.log('Scheduled', result)
       if (error) console.log(error)
     })
 
@@ -89,6 +104,7 @@ async function createScheduledTransaction() {
   //     console.log(result)
   //     if (error) console.log(error)
   //   })
+  isQuerying = false
 }
 
 async function checkUpkeep() {
@@ -99,13 +115,21 @@ async function checkUpkeep() {
       if (error) console.log(error)
     })
 }
+createScheduledTransaction()
 
 // BOT LOGIC
 setInterval(function () {
-  createScheduledTransaction()
-  queryForTransactions()
+  if (!isQuerying) {
+    createScheduledTransaction()
+  }
+}, 10000)
+
+setInterval(function () {
+  if (!isExecuting) {
+    queryForTransactions()
+  }
   // checkUpkeep()
-}, 2000)
+}, 3000)
 
 // id: '1',
 // owner: '0x4Ee949b24eDE8a2D5780f8a5038D940707Ef1070',
