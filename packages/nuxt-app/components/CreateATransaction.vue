@@ -36,7 +36,12 @@
                         </div>
                         <div class="form-field">
                             <label><span class="data-type">address</span>&nbsp;ERC20TokenAddress<span class="code">&nbsp;=</span></label>
-                            <input type="text" value="Ethereum ;" disabled>
+                            <select id="ERC20Token" name="ERC20Token" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent">
+                                <option>Polygon</option>
+                                <option>Ethereum</option>
+                                <option>Avalanche</option>
+                            </select>
+                            <!-- <input type="text" value="Ethereum ;" disabled> -->
                         </div>
                         <div class="form-field">
                             <label><span class="data-type">uint 256</span>&nbsp;amount<span class="code">&nbsp;=</span></label>
@@ -62,25 +67,31 @@
         
     </form>
 </template>
+
 <script>
+
 </script>
+
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
+
 .ide-container {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    font-size: .95rem;
 }
 .ide {
     display: grid;
     grid-template-columns: auto 1fr;
-    width: auto;
-    max-width: 600px;
     background-color: #2e303b;
     border-radius: 16px;
     padding: 30px;
-    font-family: 'Roboto Mono', monospace
+    font-family: 'Roboto Mono', monospace;
+    box-shadow: 3px 3px 10px 2px #797979;
+    margin: 16px;
 }
+
 
 .lines {
     display: flex;
