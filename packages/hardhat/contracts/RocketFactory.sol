@@ -1,5 +1,6 @@
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.4.16 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
+//SPDX-License-Identifier: MIT
+
 pragma experimental ABIEncoderV2;
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
@@ -34,8 +35,8 @@ contract RocketFactory is KeeperCompatibleInterface {
     uint256 amount,
     uint256 tip
   ) public returns (uint256 taxAmount) {
-    uint256 taxAmount = ABDKMath64x64.mulu(amount, tip);
-    transferFrom(address(this), treasury, taxAmount);
+    // uint256 taxAmount = ABDKMath64x64.mulu(amount, tip);
+    // transferFrom(address(this), treasury, taxAmount);
     return taxAmount;
   }
 

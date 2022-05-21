@@ -17,7 +17,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts()
   const chainId = await getChainId()
 
-  await deploy('YourContract', {
+  await deploy('GoofyGoober', {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
     // args: [ "Hello", ethers.utils.parseEther("1.5") ],
@@ -76,4 +76,5 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   //   console.error(error);
   // }
 }
-module.exports.tags = ['YourContract']
+
+module.exports.tags = ['GoofyGoober']

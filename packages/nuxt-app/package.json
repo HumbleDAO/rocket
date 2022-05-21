@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "prettier": "npx prettier --write . '!(node_module|build|.nuxt|contracts)/**/*'"
+    "prettier": "npx prettier --write . '!(node_module|build|.nuxt|contracts)/**/*'",
+    "upgrade-nuxi": "npx nuxi upgrade --force"
   },
   "devDependencies": {
     "@nuxt/test-utils-edge": "^3.0.0-rc.2-27530889.9e5a3cd",
@@ -22,7 +23,7 @@
     "eslint-plugin-tailwindcss": "^1.17.2",
     "eslint-plugin-vue": "^8.2.0",
     "ethers": "^5.6.5",
-    "nuxt": "3.0.0-rc.1",
+    "nuxt": "3.0.0-rc.3",
     "prettier": "^2.6.2",
     "prettier-eslint": "^14.0.3",
     "typescript": "^4.6.4",
@@ -32,7 +33,15 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
+    "@pinia/nuxt": "^0.1.9",
+    "@portis/web3": "^4.0.7",
     "@tailwindcss/forms": "^0.5.1",
-    "vuesax": "^4.0.1-alpha.25"
+    "@walletconnect/web3-provider": "^1.7.8",
+    "authereum": "^0.1.14",
+    "ethers": "^5.6.5",
+    "fortmatic": "^2.3.0",
+    "pinia": "^2.0.14",
+    "walletlink": "^2.5.0",
+    "web3modal": "^1.9.7"
   }
 }

@@ -5,10 +5,10 @@
     "ethereum",
     "vue",
     "nuxt",
-    "uniswap",
     "workspaces",
     "yarn"
   ],
+  "type": "module",
   "private": true,
   "scripts": {
     "nuxt-app:build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
@@ -16,6 +16,7 @@
     "nuxt-app:generate": "yarn workspace @humbledao/nuxt-app generate",
     "nuxt-app:preview": "yarn workspace @humbledao/nuxt-app preview",
     "nuxt-app:test": "yarn workspace @humbledao/nuxt-app test",
+    "nuxt-app:upgrade-nuxi": "yarn workspace @humbledao/nuxt-app upgrade-nuxi",
     "build": "yarn workspace @humbledao/nuxt-app build --max-old-space-size=12288",
     "prettier": "yarn workspace @humbledao/nuxt-app prettier --write && yarn workspace @humbledao/hardhat prettier --write",
     "chain": "yarn workspace @humbledao/hardhat chain",

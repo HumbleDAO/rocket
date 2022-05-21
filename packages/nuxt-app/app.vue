@@ -15,14 +15,6 @@
   ```
 -->
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-gray-100">
-    <body class="h-full">
-    ```
-  -->
   <div>
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog
@@ -76,11 +68,12 @@
                 </div>
               </TransitionChild>
               <div class="flex-shrink-0 flex items-center px-4">
-                <img
+                <!-- <img
                   class="h-8 w-auto"
                   src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
                   alt="Workflow"
-                />
+                /> -->
+                <label class="text-white text-lg">Rocket</label>
               </div>
               <div class="mt-5 flex-1 h-0 overflow-y-auto">
                 <nav class="px-2 space-y-1">
@@ -111,23 +104,20 @@
               </div>
             </DialogPanel>
           </TransitionChild>
-          <div class="flex-shrink-0 w-14" aria-hidden="true">
-            <!-- Dummy element to force sidebar to shrink to fit close icon -->
-          </div>
+          <div class="flex-shrink-0 w-14" aria-hidden="true"></div>
         </div>
       </Dialog>
     </TransitionRoot>
 
-    <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex-1 flex flex-col min-h-0 bg-gray-800">
         <div class="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
-          <img
+          <!-- <img
             class="h-8 w-auto"
             src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
             alt="Workflow"
-          />
+          /> -->
+          <label class="text-white text-lg">Rocket</label>
         </div>
         <div class="flex-1 flex flex-col overflow-y-auto">
           <nav class="flex-1 px-2 py-4 space-y-1">
@@ -169,37 +159,16 @@
           <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />
         </button>
         <div class="flex-1 px-4 flex justify-between">
-          <div class="flex-1 flex">
-            <form class="w-full flex md:ml-0" action="#" method="GET">
-              <label for="search-field" class="sr-only">Search</label>
-              <div
-                class="relative w-full text-gray-400 focus-within:text-gray-600"
-              >
-                <div
-                  class="absolute inset-y-0 left-0 flex items-center pointer-events-none"
-                >
-                  <SearchIcon class="h-5 w-5" aria-hidden="true" />
-                </div>
-                <input
-                  id="search-field"
-                  class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
-                  placeholder="Search"
-                  type="search"
-                  name="search"
-                />
-              </div>
-            </form>
-          </div>
+          <div class="flex-1 flex"></div>
           <div class="ml-4 flex items-center md:ml-6">
-            <button
+            <!-- <button
               type="button"
               class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span class="sr-only">View notifications</span>
               <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
+            </button> -->
 
-            <!-- Profile dropdown -->
             <Menu as="div" class="ml-3 relative">
               <div>
                 <MenuButton
@@ -280,12 +249,12 @@ import {
 import { SearchIcon } from '@heroicons/vue/solid'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  { name: 'Home', href: '#', icon: HomeIcon, current: true },
+  // { name: 'Team', href: '#', icon: UsersIcon, current: false },
+  // { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  // { name: 'Documents', href: '#', icon: InboxIcon, current: false },
+  // { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
