@@ -8,15 +8,22 @@ const Web3 = require('web3')
 const Provider = require('@truffle/hdwallet-provider')
 const json = require('../nuxt-app/contracts/ABI/RocketFactory.json')
 const tagJSON = require('../nuxt-app/contracts/ABI/GoofyGoober.json')
-const addy = '0x07180cdee8391Af675B30F39F5C9Ac6b0097C598'
+const addy = '0x90647e2337708BacDF0ECa1747feB6A0a9Dc7C98'
 const ctag = '0xc69F4eF2138764A52e7dd7Ec2931d1CdD7B32d0f'
 const alchemyKey = process.env.ALCHEMY_API
 const provider = new Provider(
   process.env.PRIVATE_KEY,
   `https://polygon-mumbai.g.alchemy.com/v2/${alchemyKey}`
 )
+const wssprovider = new Provider(
+  process.env.PRIVATE_KEY,
+  `wss://polygon-mumbai.g.alchemy.com/v2/YsIl9rQ2nDICfxWIx1RkQ_YGj0X7lSdN`
+)
 const web3 = new Web3(provider)
+const webStream = new Web3(wssprovider)
 const Rocket = new web3.eth.Contract(json, addy)
+const RocketStream = new webStream.eth.Contract(json, addy)
+
 const CTAG = new web3.eth.Contract(tagJSON, ctag)
 let isExecuting = false
 let isQuerying = false
@@ -124,15 +131,15 @@ createScheduledTransaction()
 setInterval(function () {
   if (!isQuerying) {
   }
-  // createScheduledTransaction()
-}, 5000)
+  createScheduledTransaction()
+}, 70000)
 
 setInterval(function () {
   if (!isExecuting) {
     queryForTransactions()
   }
   // checkUpkeep()
-}, 3000)
+}, 8000)
 
 // id: '1',
 // owner: '0x4Ee949b24eDE8a2D5780f8a5038D940707Ef1070',

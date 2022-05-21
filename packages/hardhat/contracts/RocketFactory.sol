@@ -87,6 +87,7 @@ contract RocketFactory is KeeperCompatibleInterface {
       true
     );
     transactionsList.push(newTransaction);
+    emit TransferScheduled(receiver, ERC20TokenAddress, amount, deadline, tip);
   }
 
   //TODO
@@ -132,6 +133,13 @@ contract RocketFactory is KeeperCompatibleInterface {
       false
     );
     transactionsList[id] = newTransaction;
+    emit TransferExecuted(
+      scheduledTx.receiver,
+      scheduledTx.ERC20TokenAddress,
+      scheduledTx.amount,
+      scheduledTx.deadline,
+      scheduledTx.tip
+    );
     return newTransaction;
   }
 
@@ -140,11 +148,7 @@ contract RocketFactory is KeeperCompatibleInterface {
     return transactionsList;
   }
 
-  function getAllTransactionsLength()
-    public
-    view
-    returns (Transaction[] memory)
-  {
+  function getAllTransactionsLength() public view returns (uint256) {
     return transactionsList.length;
   }
 
@@ -183,7 +187,7 @@ contract RocketFactory is KeeperCompatibleInterface {
     uint256 limit = 0;
     for (uint256 index = 0; index < allTxs.length; index++) {
       Transaction memory txn = allTxs[index];
-      if (txn.deadline < block.timestamp && txn.pending == true && limit < 10) {
+      if (txn.deadline < block.timestamp && txn.pending == true && limit < 5) {
         executeTransaction(txn.id);
         limit++;
       }
